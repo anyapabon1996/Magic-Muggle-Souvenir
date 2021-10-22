@@ -1,0 +1,102 @@
+/* CAMBIO MONETARIO */ 
+.currency-paragraph{
+    margin: 2rem 0;
+    font-size: 2rem;
+}
+
+#send {
+    flex-basis: 1rem;
+    padding: 1rem 3rem;
+    background-color: rgba(202, 62, 28, 0.795);
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 1rem;
+}
+
+.my-send {
+    margin: 3rem 0;
+}
+
+.shape {
+    width: 4.5rem;;
+    height: 4.5rem;
+    border-style:hidden;
+    border-radius: 5rem;
+    margin-right: 2rem;
+}
+
+.galeon,  .galeon1 {
+    background-color: gold;
+    transition: 1s;
+}
+
+.sickle, .sickle1 {
+    background-color: silver;
+    transition: 1s;
+
+}
+
+.knut, .knut1 {
+    background-color: rgb(92, 5, 5);
+    transition: 1s;
+}
+
+.galeon:hover, .sickle:hover, .knut:hover {
+    transform: scale(1.3);
+    transition: all 1s;
+
+    -webkit-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+}
+
+.results {
+    // display: none;
+
+    .galeon1, .knut1, .sickle1 {
+        margin-bottom: 1rem;
+    }
+
+    div:hover .galeon1,
+    div:hover .sickle1,
+    div:hover .knut1 {
+        transform: translateX(-13.5rem) translateY(6rem);
+        -webkit-transform: translateX(-13.5rem) translateY(6rem);
+        -o-transform: translateX(-13.5rem) translateY(6rem);
+        -moz-transform: translateX(-13.5rem) translateY(6rem);
+    }
+
+}
+
+@media only screen and (max-width: 425px) {
+    .shape {
+        margin: 0.5rem 2rem;
+    }
+
+    .galeon1, .sickle1, .knut1 {
+        height: 1.5rem;
+        border-radius: 1rem;
+        margin: 2rem;
+    }
+
+    .results div:hover .galeon1,
+    .results div:hover .sickle1,
+    .results div:hover .knut1 {
+        transform: none;
+        animation: fill-content 1s;
+    }
+    
+    @keyframes fill-content {
+        0% {
+            width: 4rem;
+            height: 2rem;
+        }
+
+        100% {
+            width: 12rem;
+            height: 4rem;
+        }
+    }
+}
+
+/* FIN CAMBIOMONETARIO */ 

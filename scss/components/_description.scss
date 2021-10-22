@@ -1,0 +1,93 @@
+/* DESCRIPTION */
+@import '../basis.scss/extended'; 
+
+.description-conteiner {
+    padding-top: 5rem;
+
+    /* DESCRIPTION HTML */ 
+    .col-description {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+
+        /* CAMI ME PODRIAS AYUDAR CON ESTO POR FA. QUIERO QUE MI IMGANE TENGA ESTE BORDADO */
+        // outline: 2px solid black;
+    }
+
+    .col {
+
+        form {
+
+            #the-quantity{
+                width: 4rem;
+                height: 4rem;
+                border: 0.1rem solid black;
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            #btn-carrito{
+                margin-left: 1.5rem;
+                background-color:tomato;
+                @extend %botones; 
+            }
+        }
+
+        section {
+
+            #btn-favoritos {
+                display: block;
+                margin: 1.5rem 0 1.5rem 2.3rem;
+                background-color:tomato;
+                @extend %botones; 
+
+                @media only screen and (max-width: 375px){
+                    margin: 1.5rem auto;
+                }
+            }
+            
+            #btn-comprar {
+                display: block;
+                margin: 1.5rem 0;
+                background-color:tomato;
+                @extend %botones;
+
+                @media only screen and (max-width: 375px){
+                    margin: 1.5rem auto;
+                }
+            }
+        }
+    }
+
+    //cuando la pantalla sea my pequeña, todo al centro. 
+    @media only screen and (max-width: 375px){
+        .row {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        
+    }
+}
+
+.another-conteiner-description{
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    #btn-regrear{
+        padding: 1rem 3rem;
+        background-color: rgba(202, 62, 28, 0.795);
+        font-size: 2rem;
+        font-weight: bold;
+        border-radius: 1rem;
+    }
+}
+
+
+/* FIN DESCRIPTION HTML */ 

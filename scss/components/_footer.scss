@@ -1,0 +1,31 @@
+/* FOOTER */
+footer {
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+
+    .logo{
+        background-color: #03A4A1;
+    }
+
+    .footer-container{
+        display: flex;
+        justify-content: space-evenly;
+        // background-color: #03A4A1;
+        background-image: linear-gradient(to top, #eec0c6 40%, #32bbab94 74%);
+        
+        .footer-item{
+            flex-basis: auto;
+            flex-grow: 1;
+            text-align: center;
+            padding-bottom: 3rem;
+
+
+            a {
+                text-decoration: none;
+                color: black;
+                font-size: $p-size/1.2;
+                background-image: linear-gradient(to top, #eec0c6 40%, #32bbab94 74%);
+            }
+        }
+    }
+}
+/*FIN FOOTER*/ 

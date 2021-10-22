@@ -1,0 +1,114 @@
+  /* CUERPO DEL INDEX  */
+  @import'../basis.scss/variables';
+
+main {
+
+  .carousel-inner{
+    h3{
+      font-size: $p-size;
+    }
+
+    p{
+      font-size: $p-size;
+    }
+
+    .btn-primary1, .btn-primary2 {
+      background-color: #005252;
+      border: .3rem solid white;
+      font-weight: bolder;
+    }
+
+    .btn-primary1:hover, .btn-primary2:hover{
+      background-color: white;
+      border: .3rem solid #025247;
+      color: #025247;
+      font-weight: bolder;
+    }
+
+    .btn-primary3{
+      background-color: white;
+      color: black;
+      font-weight: bolder;
+      border: .3rem solid #438b82;
+    }
+
+    .btn-primary3:hover {
+      background-color:#438b82;
+      color: white;
+      border-color: white;
+    }    
+
+    @media only screen and (max-width: 725px){
+      p{
+        display: none;
+      }
+      .carousel-caption{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+    }
+    
+  }
+
+  .marketing{
+      margin-top: $section-margin;
+
+    h3{
+      font-family: 'titulo-negrita';
+      font-size: 3em;
+    }
+
+    .bd-placeholder-img{
+      width: 25rem;
+      height: 25rem;
+    }
+
+    .btn-secondary:hover {
+      color: #fff; 
+      background-color: #048879c5; 
+      border-color: #6c757d;
+    }
+
+    .text-muted {
+      
+      color: rgba(185, 105, 105, 0.836)!important;
+  }
+    
+
+    p{
+      font-size: $p-size;
+
+      a{
+        font-size: $p-size;
+        background-color: rgba(185, 105, 105, 0.836);
+        border: brown;
+      }
+
+      a:focus{
+        background-color: #048879;
+      }
+
+    }
+
+    @media only screen and (max-width: 990px){
+      .unsam-pic, .pub-pic {
+        margin-top: $section-margin*1.5;
+      }
+    }
+
+    .img-center-index{
+      border-radius: 20px;
+      height: 40rem;
+      width: 40rem;
+    }
+
+    .col-features {
+      margin: auto;
+    }
+  }
+}
+
+
+  /* FIN CUERPO DEL INDEX */

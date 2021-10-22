@@ -1,0 +1,4 @@
+@mixin h3-font($font, $size) {
+    font-family: $font;
+    font-size: $size;
+}
