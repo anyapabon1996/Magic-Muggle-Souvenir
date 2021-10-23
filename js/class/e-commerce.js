@@ -1,10 +1,8 @@
 class potterProducts {
     constructor () {
         this.products = [];
-        this.car = [];
         this.Send = {method: '', price: 0};
         this.coupon = {codex: 'mago', percentage: 15};
-        this.favorites = [];
         this.extraGif = 5000;
     }
 
@@ -16,11 +14,6 @@ class potterProducts {
         this.products = this.products.concat(allProducts); //agregamos todos los productos. VITAL USAR CONCAT EN VEZ DE PUSH
         localStorage.myProducts = JSON.stringify(allProducts); // guardamos todos los productos en el localStorage. 
     }
-    // <img 
-    // src='${element.src}'
-    // class = 'selling-image'
-    // alt='${element.alt}'
-    // data-id='${element.id}'>
 
     showProducts (category) {
         let acumulador = ``;
