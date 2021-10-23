@@ -35,4 +35,16 @@ if (localStorage.getItem('myMoney') != null) {
 toBuy(miCarro);
 
 
+//lo intenté agarrar del main,y  de vuelta, no funciona, me tira error. 
+let magicMuggleSouvenir = new potterProducts(); 
+
+$.get('../products.json', function(response, status){
+    magicMuggleSouvenir.addProducts(response);
+    console.log(magicMuggleSouvenir.products);
+});
+
+console.log(magicMuggleSouvenir.products);
+
+
+
 

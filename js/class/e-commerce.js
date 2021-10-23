@@ -44,4 +44,16 @@ class potterProducts {
             }
         })
     }
+
+    controlStock(id, quantity) {
+        //busco donde está el producto
+        let index = this.products.forEach(element => {
+            element.id == id
+        });
+
+        this.products[index].stock -= quantity; 
+
+        localStorage.myProducts = JSON.stringify(this.products);
+
+    }
 }
