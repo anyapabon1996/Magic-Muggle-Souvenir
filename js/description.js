@@ -1,21 +1,8 @@
 
-//variables auxiliar para determinar si no tiene nada de dinero. 
-let flag = false
-
 //recupero el objeto que fue causante del click.
 if (localStorage.getItem('objectClick') != null) {
     var theProduct = JSON.parse(localStorage.getItem('objectClick'));
     $('title').html(theProduct.title);
-}
-
-//recupero el dinero que tenga el usuario 
-if (localStorage.getItem('myMoney') != null) {
-    //recupero el objeto dinero del local 
-    let cashAuxiliar = JSON.parse(localStorage.getItem('myMoney'));
-
-    //con este dinero es q trabajará el cliente. 
-    var cash = cashAuxiliar.total*182; 
-    flag = true; 
 }
 
 document.getElementById('object-title').innerHTML = theProduct.title;//modifico el titulo 
@@ -41,8 +28,11 @@ activeAddToCar();
 //para agregar a favoritos. 
 activeToAddToFavorites(); 
 
-//para cuando presiona el botón comprar 
-toBuy(theProduct.stock);
+//para ver el carrito 
+document.getElementById('btn-comprar').addEventListener('click', function() {
+    location.href='buyPage.html'
+})
+
 
 
 

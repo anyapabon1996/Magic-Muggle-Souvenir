@@ -37,12 +37,7 @@ class car {
         if(validation2 && validation) {
             //si el producto no estaba en el carrito, le creo una nueva propiedad q exprese la cantidad q ha comprado el el cliente, y la misma cantidad.
             productToAdd.newQuantity = quantity; 
-
-            //elimino las propiedades que no necesito en el carrito.
-            delete productToAdd.stock;
-            delete productToAdd.src;
-            delete productToAdd.alt;
-            delete productToAdd.category;
+            
             this.carrito.push(productToAdd); 
 
             alert('añadido con éxito');

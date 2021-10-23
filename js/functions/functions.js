@@ -39,91 +39,6 @@ const goBack = () => {
 } 
 
 
-
-
-
-
-//FUNCION AL OPRIMIR EL BOTON COMPRAR
-//funcion que controla el fondo 
-const bgReaction = (valueOpacity, valueVisibility) => {
-    $('.my-modal-container').css('opacity', `${valueOpacity}`)
-                            .css('visibility', `${valueVisibility}`);
-}
-
-//función que saca del modal. 
-const outModal = () => {
-    const modal = document.getElementsByClassName('my-modal')[0];
-    //le dice que ejecuta la acción contraria de la que se encuentre. o sea, de show a hide y viceversa
-    modal.classList.toggle('my-modal-close');
-  
-    //Esta de acá, es una función de JS que controla el tiempo en el que algo se va a ir de la pantalla 
-    setTimeout(function(){
-        //como regresamos a la la pagina sin el cartel, le quitamos la oscuridad de fondo 
-        bgReaction('0','hidden');
-  
-        },850);
-  }
-
-
-//vita declarar esta funciòn de esta manera. Es otra forma de Array.from(document.getelemenbyclassname())[0]
-const toBuy = (inStock) => {
-
-    // const modal = document.querySelectorAll('.my-modal')[0];
-    const modal = document.getElementsByClassName('my-modal')[0];
-
-    $('#btn-comprar').click((event)=> {
-
-        //cantidad seleccionada por el cliente 
-        let quantityToBuy = parseInt($('#the-quantity').val()); 
-        
-        if (quantityToBuy>0){
-    
-            //controlamos que tengamos en stock 
-            if(quantityToBuy<=inStock){
-
-                //si es cierto que es falso q no cargo dinero, O que la cantidad cargada es menor al costo del producto
-                if(!flag || cash<theProduct.price) {
-                
-                    //con esto le digo que active la opacidad y ponga visible el tono oscuro de fondo
-                    bgReaction('1','visible');
-                    
-                    
-                    //con esta saco el popup
-                    // $('.my-modal-close').show(); → ¿POR QUÉ ESTO ASÍ NO FUNCIONA?
-                    modal.classList.toggle('my-modal-close');
-                }
-                
-                //en caso de que todo vaya bien, agregamos al carrito y mandamos al usuario a la pagina de compra 
-                else {
-                    miCarro.addCar(theProduct.id, quantityToBuy);
-                    location.href = 'buyPage.html';
-                }
-            }
-            else alert('Ha ingresado una cantidad fuera de stcok');
-           
-        }
-        else alert('Ingrese cantidad a comprar');
-    });
-
-    $('.my-close').click(()=> {
-        outModal(); 
-    });
-
-
-    //METODO ESTRATEGICO PARA SABER A Q PARTE DEL HTML SE LE DA CLICK,
-    window.addEventListener('click', function(event){
-
-        //si le da click fuera de la ventana modal, que se salga
-        if(event.target == document.getElementsByClassName('my-modal-container')[0]) {
-            outModal(); 
-        }
-    })
-
-}
-
-
-
-
 /////////////////////////////////////////CAMBIOMONETARIO////////////////////////////////////
 
 //valores equivalentes 
@@ -205,5 +120,144 @@ const activeToConvert = () => {
     }); 
 
     
+}
+
+
+
+/////////////////////////   BUYPAGE/    //////////////////////////////////////////////////////////////////
+
+//este pedazo de la funcion lo que hace es captar los caambios en las cantidades 
+const upDate = () => {
+    Array.from(document.getElementsByClassName('my-quantity-input')).forEach(element => {
+        element.addEventListener('change', function(event){
+
+            //tomo el id del objeto disparador, que será como un index
+            let actualId = event.target.getAttribute('data-id');
+
+            //tomo el nuevo valor en cantidad
+            let valor = parseInt(element.value);
+
+            //tomo el precio de ese objeto 
+            let valor2 =parseInt(document.getElementsByClassName('precio')[actualId].innerHTML); //  miCarro.carrito[actualId].price;
+          
+            //imprimimos en pantalla el nuevo valor 
+            document.getElementsByClassName('variable')[actualId].innerHTML = valor2*valor; 
+        }); 
+    });
+}
+
+//función para mostrar lo que tiene el carrito, y editar en pantalla algunos cambios. 
+function showCarCards(){
+    miCarro.carrito.forEach((element,index) => {
+        $('#my-products-in-car').append(`<tr>
+        <th scope="row" class"btn-delete">X</th>
+        <td><img src="${element.src}" width="50px" height="50px"></td>
+        <td>${element.title}</td>
+        <td class="precio">${element.price}</td>
+        <td><input type="number" class="my-quantity-input" data-id="${index}"></td>
+        <td><p class="variable">${element.price*element.newQuantity}</p></td>
+        </tr>`
+        );
+        
+        //le pasamos de manera dinámica la cantidad 
+        document.getElementsByClassName('my-quantity-input')[index].value = element.newQuantity; 
+    });
+
+    //aqui va el total 
+    $('#my-products-in-car').append(`<tr>
+    <th scope="row"></th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class="total">Total</td>`); 
+
+
+    
+    //actualiza si cambia la cantidad 
+    upDate(); 
+
+}
+
+//FUNCION AL OPRIMIR EL BOTON COMPRAR
+//funcion que controla el fondo 
+const bgReaction = (valueOpacity, valueVisibility) => {
+    $('.my-modal-container').css('opacity', `${valueOpacity}`)
+                            .css('visibility', `${valueVisibility}`);
+}
+
+//función que saca del modal. 
+const outModal = () => {
+    const modal = document.getElementsByClassName('my-modal')[0];
+    //le dice que ejecuta la acción contraria de la que se encuentre. o sea, de show a hide y viceversa
+    modal.classList.toggle('my-modal-close');
+  
+    //Esta de acá, es una función de JS que controla el tiempo en el que algo se va a ir de la pantalla 
+    setTimeout(function(){
+        //como regresamos a la la pagina sin el cartel, le quitamos la oscuridad de fondo 
+        bgReaction('0','hidden');
+  
+        },850);
+  }
+
+//vita declarar esta funciòn de esta manera. Es otra forma de Array.from(document.getelemenbyclassname())[0]
+const toBuy = (arrayCarrito) => {
+
+    var goOn =0; 
+
+    // const modal = document.querySelectorAll('.my-modal')[0];
+    const modal = document.getElementsByClassName('my-modal')[0];
+
+    $('#btn-comprar').click((event)=> {
+
+
+        //cantidad seleccionada por el cliente 
+        Array.from(document.getElementsByClassName('my-quantity-input')).forEach((element,index) => { 
+            goOn += (element.value>0 && element.value<arrayCarrito.carrito[index].stock) ? 1 : 0; 
+        
+        }); 
+
+        if (goOn == arrayCarrito.carrito.length){
+
+            
+                //si es cierto que es falso q no cargo dinero, O que la cantidad cargada es menor al costo del producto
+                if(!flag || cash<100) {
+                
+                    //con esto le digo que active la opacidad y ponga visible el tono oscuro de fondo
+                    bgReaction('1','visible');
+                    
+                    
+                    //con esta saco el popup
+                    // $('.my-modal-close').show(); → ¿POR QUÉ ESTO ASÍ NO FUNCIONA?
+                    modal.classList.toggle('my-modal-close');
+                }
+                else {
+                    //actualizo el nuevo array de carrito, en caso de que el usuario haya hecho lguna modificacion 
+                    Array.from(document.getElementsByClassName('my-quantity-input')).forEach((element,index) => {  
+                        let valor = parseInt(element.value); 
+                        arrayCarrito.carrito[index].newQuantity=valor; 
+                    });
+                    
+                    
+                }
+        }
+        else alert ('Ha ingresado una cantidad fuera de Stock, o negativa');
+   
+    });
+
+    $('.my-close').click(()=> {
+        outModal(); 
+    });
+
+
+    //METODO ESTRATEGICO PARA SABER A Q PARTE DEL HTML SE LE DA CLICK,
+    window.addEventListener('click', function(event){
+
+        //si le da click fuera de la ventana modal, que se salga
+        if(event.target == document.getElementsByClassName('my-modal-container')[0]) {
+            outModal(); 
+        }
+    })
+
 }
 
