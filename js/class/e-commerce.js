@@ -40,7 +40,7 @@ class potterProducts {
                 let idImageClick = event.target.getAttribute('data-id'); //obtengo el id del producto. 
                 let objectClick = this.products.find(element => element.id == idImageClick); //guardo el objeto click en una variable
                 localStorage.objectClick = JSON.stringify(objectClick);//guardo en el local el objeto al que le di click. 
-                location.href = 'description.html';//me voy a la pagina que tiene la descripcion del producto 
+                location.href = 'description.html#aqui';//me voy a la pagina que tiene la descripcion del producto 
             }
         })
     }

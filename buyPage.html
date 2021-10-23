@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SE LO PASO POR JS -->
-    <title></title>
+    <title>Mis productos | Pertenencias Mágicas | Mis pendientes por comprar</title>
 
     <!-- FAVICON DE LA PAGINA -->
     <link href="image/favicon.ico" rel="icon" type="image/x-icon" />
@@ -23,9 +22,12 @@
       <!-- lo conecto con Functions -->
       <script src="js/functions/functions.js"></script>
       <!-- Lo conecto con mi clase carros-->
-      <script src="js/class/car.js" defer></script>
-      <!-- description.js -->
-      <script src="js/description.js" defer></script>
+      <script src="js/class/car.js" defer></script> 
+      <!-- lo conecto con mi eccomerse -->
+      <script src="js/class/e-commerce.js"></script>
+      <!-- buyPage.js -->
+      <script src="js/buyPage.js" defer></script>
+      
 </head>
 <body>
     <header>
@@ -33,7 +35,7 @@
         <h1 class="display-1 text-center">Magic Muggle Souvenir</h1>
 
         <!-- SLOGAN DEL HTML -->
-        <h2 class="display-6 text-center">Comprar es una forma de <i>Tener</i>, y tener es una forma del <i>Ser</i>. ¡Anímate a ser!</h2>
+        <h2 class="display-6 text-center">Algunas pertenencias significan tanto como un <i>Horrocrux</i>, porque contienen más de nosotros y de nuestra historia</h2>
 
         <!-- MENÚ -->
         <ul class="nav nav-tabs d-flex d-flex justify-content-evenly">
@@ -69,63 +71,50 @@
         <!-- FIN MENÚ -->
     </header>
 
-    
+    <!-- DIVISOR -->
     <div class="title-section-separator" id="aqui"></div>
 
-    <!-- CUERPO DE LA DESCRIPCIÓIN DEL PRODUCTO -->
-    <section class="conteiner description-conteiner">
-        <div class="row">
-            <div class="col col-description">
-                <img id="imagen-description" src="#" alt="#">
-            </div>
-    
-            <div class="col">
-                <h3 id="object-title">Titulo</h3>
-                <strong id="my-price">Precio</strong>
-                
-                <!-- FORMULARIO DE COMPRA -->
-                <form id="formulario1">
-                    <input type="number" id='the-quantity'>
 
-                    <input type="submit" value="Agregar al carrito" id="btn-carrito">
-                </form>
+    <!-- TABLA PARA MOSTRAR LOS PRODUCTOS -->
 
-                <section>
-                    <button id="btn-favoritos">Añadir a Favoritos</button>
+    <main class="container">
+        <section class="row">
+            <table class="table">
+                <thead >
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Sub-Total</th>
+                </tr>
+                </thead>
 
-                    <button id="btn-comprar">Comprar</button>
-                </section>
-                
-            </div>
-        </div>
+                <tbody id="my-products-in-car">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
     </section>
-
-    <!-- POPUP -->
-    <section class="my-modal-container">
-        <div class="my-modal my-modal-close">
-            <p class="my-close">X</p>
-            <img src="image/moneda-magica.webp" alt="Galeon, Sickle y Knut">
-            <div class="my-modal-texto">
-                <h3>No has cargado dinero Muggle</h3>
-                <a href="cambioMonetario.html" class="redirection">Cargar</a>
-            </div>
-        </div>
-    </section>
-    <!-- FIN POPUP -->
+    </main>
  
-    <section class="another-conteiner-description conteiner">
-        <section class="row"> 
-            <section class="col">
-                <h3>Descripción</h4>
-                <p id="miDescripcion">Parrafo</p>
-                <button id="btn-regrear">Regresar</button>
-            </section> 
-        </section>
-    </section>
-    <!-- FIN DE LA DESCRIPCION DEL PRPODUCTO -->
-
     <br><br>
-
 
     <footer> 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

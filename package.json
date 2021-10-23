@@ -7,5 +7,13 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anyapabon1996/Magic-Muggle-Souvenir.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anyapabon1996/Magic-Muggle-Souvenir/issues"
+  },
+  "homepage": "https://github.com/anyapabon1996/Magic-Muggle-Souvenir#readme",
   "description": ""
 }

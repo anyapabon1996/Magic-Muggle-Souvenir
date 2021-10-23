@@ -347,6 +347,7 @@ footer .footer-container .footer-item a {
   padding: 0.5rem;
 }
 
+/*POP UP*/
 body .my-modal-container {
   opacity: 0;
   visibility: hidden;
@@ -400,12 +401,45 @@ body .my-modal-container .my-modal .my-modal-texto {
   align-items: center;
 }
 body .my-modal-container .my-modal .my-modal-texto h3 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  color: white;
+}
+body .my-modal-container .my-modal .my-modal-texto a {
+  border: 1 solid black;
+  border-radius: 5rem;
+  text-decoration: none;
+  text-align: center;
+  width: 10rem;
+  padding: 0.7rem 0;
+  font-size: 1.5rem;
+  color: #077a6d94;
+  font-weight: bolder;
+  background-color: white;
 }
 body .my-modal-container .my-modal-close {
   transform: translateY(-200%);
+}
+@media only screen and (min-width: 425px) and (max-width: 725px) {
+  body .my-modal-container .my-modal-texto h3 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+  body .my-modal-container .my-modal-texto a {
+    border: 1 solid black;
+    border-radius: 5rem;
+    text-decoration: none;
+    text-align: center;
+    width: 10rem;
+    padding: 0.7rem 0;
+    font-size: 1.5rem;
+    color: #077a6d94;
+    font-weight: bolder;
+    background-color: white;
+  }
 }
 @media only screen and (max-width: 425px) {
   body .my-modal-container .my-modal img {
@@ -416,6 +450,14 @@ body .my-modal-container .my-modal-close {
     font-weight: 500;
     margin-bottom: 0.5rem;
     text-align: center;
+  }
+  body .my-modal-container .my-modal .my-modal-texto a {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    width: 5rem;
+    padding: 0.35rem 0;
   }
 }
 
