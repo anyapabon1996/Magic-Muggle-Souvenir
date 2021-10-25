@@ -47,9 +47,13 @@ class potterProducts {
 
     controlStock(id, quantity) {
         //busco donde está el producto
-        let index = this.products.forEach(element => {
+
+        console.log(this.products);
+        let index = this.products.findIndex(element => 
             element.id == id
-        });
+        );
+
+        console.log(index);
 
         this.products[index].stock -= quantity; 
 

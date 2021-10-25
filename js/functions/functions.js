@@ -1,3 +1,10 @@
+//función para llamar todos los productos. 
+async function callProducts(){
+    const answer = await fetch('../products.json');
+    const data = await answer.json();
+    return data; 
+}
+
 //////////////////////////////////DESCRIPTION/////////////////////////////////
 
 //Funcion Para agregar al carrito
@@ -231,14 +238,16 @@ const toBuy = (arrayCarrito) => {
                     // $('.my-modal-close').show(); → ¿POR QUÉ ESTO ASÍ NO FUNCIONA?
                     modal.classList.toggle('my-modal-close');
                 }
+                //si todo va bien, entonces solo debe pagar. 
                 else {
                     //actualizo el nuevo array de carrito, en caso de que el usuario haya hecho lguna modificacion 
                     Array.from(document.getElementsByClassName('my-quantity-input')).forEach((element,index) => {  
                         let valor = parseInt(element.value); 
                         arrayCarrito.carrito[index].newQuantity=valor; 
                     });
-                    
-                    
+
+                    let downsStock = JSON.parse(localStorage.getItem('myProducts'));
+                    console.log(downsStock);
                 }
         }
         else alert ('Ha ingresado una cantidad fuera de Stock, o negativa');
