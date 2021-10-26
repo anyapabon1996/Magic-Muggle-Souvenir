@@ -3,6 +3,12 @@ let flag = false
 
 let miCarro = new car(); 
 
+//METODO DE ENVIO POR DEFAULT 
+var sendMethod = 'Mago';
+
+//TOTAL A PAGAR POR DEFAULT 
+var totalToPay = 0; 
+
 //agarro lo que hay en el local
 miCarro.addFromLocal(); 
 
@@ -31,14 +37,14 @@ if (localStorage.getItem('myMoney') != null) {
     flag = true; 
 }
 
+botones();
+
 // //para cuando presiona el botón comprar 
 toBuy(miCarro);
 
 
-//lo intenté agarrar del main,y  de vuelta, no funciona, me tira error. 
-let magicMuggleSouvenir = new potterProducts(); 
 
-//llamamos a todos los productos que tenemos en el jason. 
+
 
 
 

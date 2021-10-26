@@ -1,9 +1,9 @@
 class potterProducts {
     constructor () {
         this.products = [];
-        this.Send = {method: '', price: 0};
         this.coupon = {codex: 'mago', percentage: 15};
-        this.extraGif = 5000;
+        this.extraGif = {minimo: 5000, descuento: 15};
+        this.send = [{buho:300}, {redFlu:500}, {mago:0}]; 
     }
 
     /**
@@ -45,19 +45,40 @@ class potterProducts {
         })
     }
 
+    //baja de stock 
     controlStock(id, quantity) {
         //busco donde está el producto
-
-        console.log(this.products);
         let index = this.products.findIndex(element => 
             element.id == id
         );
-
-        console.log(index);
-
+        //bajo la cantidad de stock
         this.products[index].stock -= quantity; 
 
+        //guardo en el local 
         localStorage.myProducts = JSON.stringify(this.products);
+    }
 
+    toPay(coupon, method, total, cash){
+        //descuenot a aplicar según cupon
+        let descuento = (100-this.coupon.percentage)/100;
+
+        //apliacion de decuento de cupon
+        total = (coupon == this.coupon.codex) ? total*descuento : total; 
+        
+        //aplicacion de sobrecarga por envío, o no. 
+        total += (method=='Buho') ? this.send[0].buho : (method=='Red Flu') ? this.send[1].redFlu : this.send[2].mago;
+
+        //aplicacion de descuento por una compra mayor a minimo.
+        total = (total>this.extraGif.minimo) ? total*((100-this.extraGif.descuento)/100) : total; 
+
+        cash -= total; 
+
+        let auxiliar = JSON.parse(localStorage.getItem('myMoney')); 
+
+        auxiliar.total = parseInt(cash/182); 
+
+        localStorage.myMoney =JSON.stringify(auxiliar); 
+
+        console.log('Ha pagado un total de '+total+'$. Su capital actual es: '+cash+'$. Gracias por su compra'); 
     }
 }

@@ -88,8 +88,6 @@ class car {
     //Funcion para varciar el carrito. 
     emptyCar() {
         localStorage.removeItem('clientCar');
-        localStorage.removeItem('clientFavorites');
     }
-
 
 }

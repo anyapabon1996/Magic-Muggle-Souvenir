@@ -1,4 +1,3 @@
-
 //recupero el objeto que fue causante del click.
 if (localStorage.getItem('objectClick') != null) {
     var theProduct = JSON.parse(localStorage.getItem('objectClick'));
@@ -15,7 +14,7 @@ $('#imagen-description').attr("alt", `${theProduct.alt}`); //método con JQUERY 
 
 goBack();  //para regresar a la tienda
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //declaro mi carro. 
 let miCarro = new car(); 
 
