@@ -335,6 +335,9 @@ const toBuy = (arrayCarrito) => {
 
                     //recupero el valor del cupon que ha ingresado, quitando los espacios en blanco laterales 
                     let myCoupon = (document.getElementById('cupon').value).trim(); 
+
+                    //tomo el metodo de envio 
+                    botones();
                     
                     magicMuggleSouvenir.toPay(myCoupon, sendMethod, totalToPay, cash); 
 
@@ -342,7 +345,8 @@ const toBuy = (arrayCarrito) => {
                     //borro todo de mi carrito. Me parece que pude haber usado miCarro en vez de arrayCarrito 
                     miCarro.emptyCar(); 
 
-                    showCarCards(); 
+                    //hago esto para vaciar la ventana. Probé con la función de showcards, y aunque funciona, tendría que recargar la página yo. 
+                    $('#my-products-in-car').html('');
 
                     alert('Compra Exitosa'); 
 
