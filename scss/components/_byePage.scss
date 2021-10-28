@@ -1,0 +1,92 @@
+
+.container{
+    .row{
+        .table{
+            .head-table-title{
+                font-size: 2rem;
+            }
+        
+            #my-products-in-car{
+                th{
+                    text-align:center;
+                    text-align: center;
+                    justify-content: center;
+                    position: relative;
+                    top: 3rem;
+                    padding: 0 2rem;
+
+
+                    button{
+                        border-radius: 10rem;
+                        background: transparent;
+                        font-weight: bolder;
+                        padding: 0.3rem;
+                    }
+                    
+                    button:hover{
+                        background: red;
+                    }
+                }
+
+                td{
+                    font-size: 2rem;
+                    padding: 2rem 0;
+
+                    img{
+                        justify-content: center;            
+                    }
+
+                    .my-quantity-input{
+                        width: 7rem;
+                        text-align: center;
+                    }
+                }
+
+                
+            }
+        }
+        .el-cupon{
+            display: flex;
+            justify-content: end;
+            margin: 1rem 0;
+
+            #cupon{
+                width: 40rem;
+                height: 3rem;
+                font-size: 1.5rem;
+                text-align: start;
+            }
+        }
+
+        .form-check{
+            display: flex;
+            justify-content: end;
+            margin: 1rem 0;
+
+            .form-check-input{
+                justify-content: center;
+                margin-right: 0.5rem;
+            }
+
+            .form-check-label{
+                font-size: 1.5rem;
+            }
+        }
+
+        .boton-conteiner{
+            display: flex;
+            justify-content: center;
+
+            #btn-comprar{
+                flex-basis: 1rem;
+                padding: 1rem 3rem;
+                background-color: rgba(202, 62, 28, 0.795);
+                font-size: 2rem;
+                font-weight: bold;
+                border-radius: 1rem;
+            }
+        }
+       
+      
+    }
+}

@@ -94,31 +94,6 @@ body{
             transform: translateY(-200%);
         }
 
-        @media only screen and (min-width: 425px) and (max-width: 725px){
-            .my-modal-texto{
-                h3{
-                    font-size: 2.5rem;
-                    font-weight: 500;
-                    margin-bottom: .5rem;
-                    color: white;
-                }
-
-                a{
-                    border: 1 solid black;
-                    border-radius: 5rem;
-                    text-decoration: none;
-                    text-align: center;
-                    width: 10rem;
-                    padding: .7rem 0;
-                    font-size: 1.5rem;
-                    color: #077a6d94;
-                    font-weight: bolder;
-                    background-color: white;
-                    
-                }
-            }
-        }
-
         @media only screen and (max-width: 425px){
             .my-modal {
                 img{
@@ -145,17 +120,40 @@ body{
             }
         }
 
+        @media only screen and (min-width: 425px) and (max-width: 768px){
+            .my-modal-texto{
+                h3{
+                    font-size: 2.5rem;
+                    font-weight: 500;
+                    margin-bottom: .5rem;
+                    color: white;
+                }
+
+                a{
+                    border: 1 solid black;
+                    border-radius: 5rem;
+                    text-decoration: none;
+                    text-align: center;
+                    width: 10rem;
+                    padding: .7rem 0;
+                    font-size: 1.5rem;
+                    color: #077a6d94;
+                    font-weight: bolder;
+                    background-color: white;
+                    
+                }
+            }
+        }
     
     }
 
-    .another-conteiner-description{
-
+    @media only screen and (max-width: 768px){
+        .my-modal-texto{
+            h3{
+                text-align: center;
+            }
+        }
     }
-
-    footer{
-
-    }
-
     
 }
 

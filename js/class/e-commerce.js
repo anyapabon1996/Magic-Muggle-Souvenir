@@ -21,7 +21,7 @@ class potterProducts {
             if (category == element.category) {
                 acumulador += `
                     <div class="card selling-image" style="width: 18rem;">
-                        <img src='${element.src}' class="card-img-top" alt='${element.alt}' data-id='${element.id}'>
+                        <img src='${element.src}' class="card-img-top goTo" alt='${element.alt}' data-id='${element.id}'>
                         <div class="card-body">
                             <p class="card-text">${element.description}</p>
                         </div>
@@ -35,7 +35,7 @@ class potterProducts {
     }
 
     goToDescription(){
-        Array.from(document.getElementsByClassName('selling-image')).forEach(element => {
+        Array.from(document.getElementsByClassName('goTo')).forEach(element => {
             element.onclick = (event) => {
                 let idImageClick = event.target.getAttribute('data-id'); //obtengo el id del producto. 
                 let objectClick = this.products.find(element => element.id == idImageClick); //guardo el objeto click en una variable

@@ -71,6 +71,8 @@ const activeToConvert = () => {
         let galeon = ($('#sending-galeon').val() > 0) ? $('#sending-galeon').val() : 0; 
         let sickle = ($('#sending-sickle').val()) > 0 ? $('#sending-sickle').val() : 0;
         let knut = ($('#sending-knut').val() > 0) ? $('#sending-knut').val() : 0; 
+
+        (knut==0 || sickle==0 || knut==0) ? console.log('todo valor negativo o 0 será tomado como 0') : console.log('todo ok');
     
         let cash = ((galeon>=0 && sickle>=0 && knut>0) || (galeon>0 && sickle>=0 && knut>=0) || (galeon>=0 && sickle>0 && knut>=0)) ? converter(galeon, sickle, knut) : alert('Ha ingresado valores incorrectos'); 
 
@@ -111,6 +113,8 @@ const activeToConvert = () => {
             $('#subtitle-results').css('text-align', 'center')
                                   .css('margin-top', '4rem')
                                   .show(5000);
+
+            $('.fondo').show(5000);
             
             $('.final-paragraph').css('margin', ' 2rem auto')
                                  .delay(2000)
@@ -163,12 +167,22 @@ const upDate = () => {
             let valor = parseInt(element.value);
 
             //tomo el precio de ese objeto 
-            let valor2 =parseInt(document.getElementsByClassName('precio')[actualId].innerHTML); //  miCarro.carrito[actualId].price;
+            let valor2 =parseInt(document.getElementsByClassName('precio')[actualId].getAttribute('data-price')); //  miCarro.carrito[actualId].price;
 
             if (valor>miCarro.carrito[actualId].stock){
                 alert ('Ha ingresado una cantidad fuera de stock'); 
                 
                 console.log(document.getElementsByClassName('my-quantity-input')[actualId]);
+
+                //le agrego este valor como por default 
+                element.value = 1;
+
+            }
+            else if (valor<=0){
+                alert('no puede ingresar una cantidad menor a 1');
+
+                //le agrego este valor como por default 
+                element.value = 1;
             }
             else {
                 //actualizo mi carrito. 
@@ -198,10 +212,10 @@ function showCarCards(){
         $('#my-products-in-car').append(`<tr>
         <th scope="row"> <button data-index='${element.id}'onclick="deleteElement(event)">X</button></th>
         <td><img src="${element.src}" width="50px" height="50px"></td>
-        <td>${element.title}</td>
-        <td class="precio">${element.price}</td>
+        <td class="cantidad">${element.title}</td>
+        <td class="precio" data-price="${element.price}">$${element.price}</td>
         <td><input type="number" class="my-quantity-input" data-id="${index}"></td>
-        <td><p class="variable">${element.price*element.newQuantity}</p></td>
+        <td><p class="variable">$${element.price*element.newQuantity}</p></td>
         </tr>`
         );
         
@@ -222,7 +236,7 @@ function showCarCards(){
     let totalInicial = sumador(); 
 
     //imprimo en pantalla el total 
-    document.getElementById('total').innerHTML = totalInicial; 
+    document.getElementById('total').innerHTML = '$'+totalInicial; 
     
     //actualiza si cambia la cantidad 
     upDate(); 
@@ -297,6 +311,7 @@ const toBuy = (arrayCarrito) => {
                     modal.classList.toggle('my-modal-close');
                 }
                 //si todo va bien, entonces solo debe pagar. 
+                else if (totalToPay<=0) alert('no tiene nada que comprar'); 
                 else {
                     //actualizo el nuevo array de carrito, en caso de que el usuario haya hecho lguna modificacion 
                     Array.from(document.getElementsByClassName('my-quantity-input')).forEach((element,index) => {  
