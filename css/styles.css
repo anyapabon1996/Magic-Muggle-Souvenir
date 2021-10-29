@@ -282,6 +282,27 @@ footer .footer-container .footer-item a {
   padding: 0.5rem;
 }
 
+.alert-text {
+  font-size: 2rem;
+}
+
+.alert-title {
+  font-size: 3rem;
+  font-family: titulo;
+}
+
+.swal2-confirm {
+  background: #cc8686;
+  display: inline-block;
+  border-radius: 3rem;
+  padding: 0.5rem;
+  width: 11rem;
+  border: 0.3rem solid #c5acac;
+}
+.swal2-confirm .style-button {
+  color: white;
+}
+
 .float {
   position: fixed;
   bottom: 7rem;

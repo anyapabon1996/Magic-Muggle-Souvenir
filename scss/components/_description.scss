@@ -1,6 +1,28 @@
 /* DESCRIPTION */
 @import '../basis.scss/extended'; 
 
+.alert-text{
+    font-size: 2rem;
+}
+
+.alert-title{
+    font-size: 3rem;
+    font-family: titulo;
+}
+
+.swal2-confirm{
+    background: rgb(204, 134, 134);
+    display: inline-block;
+    border-radius: 3rem ;
+    padding: 0.5rem;
+    width: 11rem;
+    border: 0.3rem solid rgb(197, 172, 172);
+
+    .style-button{
+        color: white;
+    }
+}
+
 .float{
 	position:fixed;
 	bottom:7rem;

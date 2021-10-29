@@ -4,6 +4,33 @@ async function callProducts(){
     const data = await answer.json(); 
 }
 
+
+//funcion de alerta de fuera de stock o negativa 
+const alertStock = () => {
+    Swal.fire({
+        title: '<h3 class="alert-title">Error!</h3>',
+        html: '<span class="alert-text"> Ha ingresado una cantidad menor que uno o fuera de stock </span>',
+        icon: 'error',
+        backdrop: true,
+        showConfirmButton: true,
+        // confirmButtonColor: 'rgba(202, 62, 28, 0.795)',//le dice el color de fondo del boton
+        buttonsStyling: false,
+        confirmButtonText: '<span class="alert-text style-button">Corregir</span>',
+    }); 
+}
+
+//funcion para añadir o modificar cammbios al carrito
+const alertAddorModifyStock = (titulo, tipo) => {
+    Swal.fire({
+        title: `<h3 class="alert-title">${titulo}</h3>`, //titulo de la alerta
+        html: `<span class="alert-text">${tipo}</span>`, // cuerpo o descripcion, podriamos usar text en vez de html, pero no la podríamos editar
+        icon: 'success', //tipo de icono 
+        backdrop: true, //que el fondo se oscurezca al salir     
+        timer: 2000, // tiempo de duracion de la alerta   
+        showConfirmButton: false, //para que no me muestre el botón  
+    }); 
+}
+
 //////////////////////////////////DESCRIPTION/////////////////////////////////
 
 //Funcion Para agregar al carrito
@@ -132,8 +159,6 @@ const activeToConvert = () => {
     
 }
 
-
-
 /////////////////////////   BUYPAGE/    //////////////////////////////////////////////////////////////////
 const sumador = () =>{
     let total1 = 0; 
@@ -170,7 +195,8 @@ const upDate = () => {
             let valor2 =parseInt(document.getElementsByClassName('precio')[actualId].getAttribute('data-price')); //  miCarro.carrito[actualId].price;
 
             if (valor>miCarro.carrito[actualId].stock){
-                alert ('Ha ingresado una cantidad fuera de stock'); 
+                
+                alertStock();
                 
                 console.log(document.getElementsByClassName('my-quantity-input')[actualId]);
 
@@ -179,7 +205,7 @@ const upDate = () => {
 
             }
             else if (valor<=0){
-                alert('no puede ingresar una cantidad menor a 1');
+                alertStock();
 
                 //le agrego este valor como por default 
                 element.value = 1;
@@ -196,7 +222,7 @@ const upDate = () => {
                 let total = sumador(); 
                 
                 //imrpimo en pantalla el total 
-                document.getElementById('total').innerHTML = total;
+                document.getElementById('total').innerHTML = '$'+total;
             }
            
         }); 
@@ -296,6 +322,9 @@ const toBuy = (arrayCarrito) => {
         
         }); 
 
+        console.log(goOn);
+        // console.log( arrayCarrito.carrito.length);
+
         if (goOn == arrayCarrito.carrito.length){
 
             
@@ -305,13 +334,23 @@ const toBuy = (arrayCarrito) => {
                     //con esto le digo que active la opacidad y ponga visible el tono oscuro de fondo
                     bgReaction('1','visible');
                     
-                    
                     //con esta saco el popup
                     // $('.my-modal-close').show(); → ¿POR QUÉ ESTO ASÍ NO FUNCIONA?
                     modal.classList.toggle('my-modal-close');
                 }
+
+                else if (totalToPay<=0) {
+                    Swal.fire({
+                        title: '<h3 class="alert-title">No tiene nada!</h3>', //titulo de la alerta
+                        html: '<span class="alert-text">Seleccione algún producto para comprar en la tienda</span>', // cuerpo o descripcion, podriamos usar text en vez de html, pero no la podríamos editar
+                        icon: 'warning', //tipo de icono 
+                        backdrop: true, //que el fondo se oscurezca al salir     
+                        timer: 2000, // tiempo de duracion de la alerta   
+                        showConfirmButton: false, //para que no me muestre el botón  
+                    });               
+                }
+
                 //si todo va bien, entonces solo debe pagar. 
-                else if (totalToPay<=0) alert('no tiene nada que comprar'); 
                 else {
                     //actualizo el nuevo array de carrito, en caso de que el usuario haya hecho lguna modificacion 
                     Array.from(document.getElementsByClassName('my-quantity-input')).forEach((element,index) => {  
@@ -348,12 +387,10 @@ const toBuy = (arrayCarrito) => {
                     //hago esto para vaciar la ventana. Probé con la función de showcards, y aunque funciona, tendría que recargar la página yo. 
                     $('#my-products-in-car').html('');
 
-                    alert('Compra Exitosa'); 
+                    alertAddorModifyStock('Compra Éxitosa', 'Hemos Registrado su Compra! Gracias por preferirnos'); 
 
                 }
-        }
-        else alert ('Ha ingresado una cantidad fuera de Stock, o negativa');
-   
+        }   
     });
 
     $('.my-close').click(()=> {

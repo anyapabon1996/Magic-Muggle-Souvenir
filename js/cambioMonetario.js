@@ -27,6 +27,5 @@ $('.mine-resuts').append(`
     <p class="final-paragraph"  style="display: none"></p>
 </div>
 `); 
-
 //para convertir las monedas a dolares. 
 activeToConvert(); 

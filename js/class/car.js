@@ -40,16 +40,19 @@ class car {
             
             this.carrito.push(productToAdd); 
 
-            alert('añadido con éxito');
+            //funcion que muestra agregado al carrip
+            alertAddorModifyStock('Añadido!', 'Se ha añadido a tu carrito');
         }
         else if (!validation){
-            alert('Ha ingresado una cantidad fuera de stock o menor que 1'); 
+            alertStock();
         }
         else {
             //si el producto ya el cliente lo tenía agregado en el carrito, le sumo la cantidad q tenia. 
             this.carrito[alreadyInCar].newQuantity += quantity; 
 
-            alert('Re agregado al carrito');
+            //funcion que muestra añadido extra
+            alertAddorModifyStock('Re-agregado!','Se ha re-agregado a tu carrito');
+
         }
         //guardo lo que tiene el carrito en el local
         localStorage.clientCar = JSON.stringify(this.carrito);
@@ -69,10 +72,24 @@ class car {
             //lo paso al local. 
             localStorage.clientFavorites = JSON.stringify(this.favorites);
 
-            alert('Añadido a favoritos');
+            Swal.fire({
+                title: '<h3 class="alert-title">Añadido a favoritos!</h3>', //titulo de la alerta
+                html: '<span class="alert-text">Se ha agregado a tus favoritos</span>', // cuerpo o descripcion, podriamos usar text en vez de html, pero no la podríamos editar
+                icon: 'success', //tipo de icono 
+                backdrop: true, //que el fondo se oscurezca al salir     
+                timer: 2000, // tiempo de duracion de la alerta   
+                showConfirmButton: false, //para que no me muestre el botón  
+            });
         }
         else {
-            alert('Este producto ya existe en sus favoritos.');
+            Swal.fire({
+                title: '<h3 class="alert-title">Existente!</h3>', //titulo de la alerta
+                html: '<span class="alert-text">Ya tienes este producto marcado como favorito</span>', // cuerpo o descripcion, podriamos usar text en vez de html, pero no la podríamos editar
+                icon: 'warning', //tipo de icono 
+                backdrop: true, //que el fondo se oscurezca al salir     
+                timer: 2000, // tiempo de duracion de la alerta   
+                showConfirmButton: false, //para que no me muestre el botón  
+            });
         }
     }
 
@@ -80,7 +97,18 @@ class car {
     deleteFromCar(id) {
         let index = this.carrito.findIndex(element => element.id == id);
 
-        (index !=- 1) ? this.carrito.splice(index, 1) && alert('Hemos eliminado el producto') : alert('Ud no tenía ese producto en el carrito'); 
+        if (index !=- 1) {
+            this.carrito.splice(index, 1);
+            Swal.fire({
+                title: '<h3 class="alert-title">Eliminado!</h3>',
+                html: '<span class="alert-text"> Se ha eliminado el producto de tu carrito </span>',
+                icon: 'success',
+                backdrop: true,
+                timer: 2000,
+                showConfirmButton: false, 
+            });
+        }
+              
 
         localStorage.clientCar = JSON.stringify(this.carrito);
     }
