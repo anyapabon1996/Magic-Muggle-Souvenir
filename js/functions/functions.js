@@ -1,10 +1,3 @@
-//función para llamar todos los productos. 
-async function callProducts(){
-    const answer = await fetch('../products.json');
-    const data = await answer.json(); 
-}
-
-
 //funcion de alerta de fuera de stock o negativa 
 const alertStock = () => {
     Swal.fire({
