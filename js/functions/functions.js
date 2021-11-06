@@ -65,7 +65,7 @@ const goBack = () => {
 } 
 
 
-/////////////////////////////////////////CAMBIOMONETARIO////////////////////////////////////
+/////////////////////////////////////////CAMBIO MONETARIO////////////////////////////////////
 
 //valores equivalentes 
 const galeonDolarValue = 25;
@@ -91,10 +91,24 @@ const activeToConvert = () => {
         let galeon = ($('#sending-galeon').val() > 0) ? $('#sending-galeon').val() : 0; 
         let sickle = ($('#sending-sickle').val()) > 0 ? $('#sending-sickle').val() : 0;
         let knut = ($('#sending-knut').val() > 0) ? $('#sending-knut').val() : 0; 
+        let cash = 0; 
 
         (knut==0 || sickle==0 || knut==0) ? console.log('todo valor negativo o 0 será tomado como 0') : console.log('todo ok');
     
-        let cash = ((galeon>=0 && sickle>=0 && knut>0) || (galeon>0 && sickle>=0 && knut>=0) || (galeon>=0 && sickle>0 && knut>=0)) ? converter(galeon, sickle, knut) : alert('Ha ingresado valores incorrectos'); 
+        if ((galeon>=0 && sickle>=0 && knut>0) || (galeon>0 && sickle>=0 && knut>=0) || (galeon>=0 && sickle>0 && knut>=0)) {
+            cash = converter(galeon, sickle, knut) 
+        }
+        else {
+            Swal.fire({
+                title: '<h3 class="alert-title">Error!</h3>',
+                html: '<span class="alert-text"> Ha ingresado valores incorrectos </span>',
+                icon: 'error',
+                backdrop: true,
+                showConfirmButton: true,
+                buttonsStyling: false,
+                confirmButtonText: '<span class="alert-text style-button">Corregir</span>',
+            }); 
+        }
 
         //guardo esta cantidad en el local
         localStorage.myMoney = JSON.stringify(cash);  
