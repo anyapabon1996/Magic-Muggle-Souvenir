@@ -156,9 +156,7 @@ const activeToConvert = () => {
                                  .toggle(3000);      
 
 
-            $('.results').slideDown(5000);
-        
-                                 
+            $('.results').slideDown(5000);                       
         }
       
     }); 
@@ -329,11 +327,10 @@ const toBuy = (arrayCarrito) => {
         
         }); 
 
-        console.log(goOn);
-        // console.log( arrayCarrito.carrito.length);
-
         if (goOn == arrayCarrito.carrito.length){
 
+                //con este método nos aseguramos que, en caso de que no haya ingresado nada el usuario, le salte el error. 
+                if (Number.isNaN(cash)) cash=0;
             
                 //si es cierto que es falso q no cargo dinero, O que la cantidad cargada es menor al costo del producto
                 if(!flag || cash<totalToPay) {
